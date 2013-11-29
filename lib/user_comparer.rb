@@ -23,6 +23,10 @@ module UserComparer
 		def friends
 			 @client.user(@username).friends_count
 		end
+
+		def tweets
+			@client.user(@username).statuses_count
+		end
 	end
 
 	class Comparer
@@ -37,7 +41,7 @@ module UserComparer
 			elsif (@user1.send(compareType) < @user2.send(compareType))
 				return @user2.username
 			else
-				return "equal number of followers"
+				return "equal number of #{compareType}"
 			end
 		end
 	end
